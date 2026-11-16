@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viva Ativo | Liberte-se do sedentarismo</title>
+    <meta name="description" content="Protótipo de combate ao sedentarismo com exercícios de 1 minuto sugeridos conforme seu objetivo e suas limitações." />
+    <meta property="og:title" content="Viva Ativo | Liberte-se do sedentarismo" />
+    <meta property="og:description" content="Pequenos exercícios para manter seu corpo em movimento durante o dia." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#16a34a" />
+
+    <!-- Instalação no celular (tela inicial) -->
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" type="image/png" href="./icons/icone-192.png" />
+    <link rel="apple-touch-icon" href="./icons/icone-192.png" />
+    
+    <!-- Tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Folha de estilo CSS -->
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app-container">
+
+      <!-- ================================================================== -->
+      <!-- 1. TELA DE APRESENTAÇÃO                                            -->
+      <!-- ================================================================== -->
+      <section class="screen active" id="screen-welcome">
+        <div class="welcome-content">
+          <div class="app-badge-logo">
+            <!-- Ícone SVG de atividade e bem-estar -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+
+          <h1 class="welcome-title">Viva Ativo</h1>
+          <p class="welcome-tagline">Liberte-se do sedentarismo</p>
+          <p class="welcome-desc">
+            Pequenos exercícios de 1 minuto para manter seu corpo ativo e saudável ao longo do dia de trabalho ou estudo.
+          </p>
+
+          <div class="welcome-features">
+            <div class="welcome-feature-card">
+              <div class="welcome-feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="welcome-feature-text">
+                <h4>Exercícios de 1 Minuto</h4>
+                <p>Movimentos rápidos sem necessidade de equipamentos.</p>
+              </div>
+            </div>
+
+            <div class="welcome-feature-card">
+              <div class="welcome-feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+              </div>
+              <div class="welcome-feature-text">
+                <h4>Lembretes no Seu Ritmo</h4>
+                <p>Avisos no intervalo que você escolher para fazer uma pausa.</p>
+              </div>
+            </div>
+
+            <div class="welcome-feature-card">
+              <div class="welcome-feature-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                </svg>
+              </div>
+              <div class="welcome-feature-text">
+                <h4>Sugestões para Você</h4>
+                <p>Exercícios escolhidos conforme seu objetivo e suas limitações.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="btn-welcome-enter">
+          <span>Começar Agora</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- 2. TELA DE CADASTRO                                                -->
+      <!-- ================================================================== -->
+      <section class="screen" id="screen-onboarding">
+        <div class="onboarding-header">
+          <h2>Seu Perfil e Metas</h2>
+          <p>Personalize os exercícios e a frequência dos seus lembretes.</p>
+        </div>
+
+        <form id="onboarding-form">
+          <div class="form-group">
+            <label class="form-label" for="input-name">Como você gostaria de ser chamado?</label>
+            <input type="text" id="input-name" class="form-input" placeholder="Ex: Maria ou Carlos" required autofocus />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Qual é seu objetivo principal?</label>
+            <div class="goal-options">
+              <button type="button" class="goal-option-btn selected" data-goal="Aliviar dores posturais">
+                <span>Aliviar dores posturais e coluna</span>
+                <span>✓</span>
+              </button>
+              <button type="button" class="goal-option-btn" data-goal="Aumentar energia e disposição">
+                <span>Aumentar energia e disposição</span>
+                <span></span>
+              </button>
+              <button type="button" class="goal-option-btn" data-goal="Combater o sedentarismo no trabalho">
+                <span>Combater o sedentarismo no trabalho</span>
+                <span></span>
+              </button>
+              <button type="button" class="goal-option-btn" data-goal="Melhorar flexibilidade e circulação">
+                <span>Melhorar flexibilidade e circulação</span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tem alguma limitação física? (opcional)</label>
+            <p class="form-hint">Os exercícios que forçam essas regiões não serão sugeridos.</p>
+            <div class="category-grid">
+              <button type="button" class="category-btn limit-btn" data-limit="joelhos">Joelhos</button>
+              <button type="button" class="category-btn limit-btn" data-limit="ombros">Ombros</button>
+              <button type="button" class="category-btn limit-btn" data-limit="punhos">Punhos / mãos</button>
+              <button type="button" class="category-btn limit-btn" data-limit="equilibrio">Equilíbrio</button>
+            </div>
+            <p class="form-hint">Se sentir dor ou tiver alguma condição de saúde, procure um profissional antes de praticar.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Intervalo entre exercícios</label>
+            <div class="interval-grid">
+              <button type="button" class="interval-btn onboarding-interval-btn" data-interval="15">15 min</button>
+              <button type="button" class="interval-btn onboarding-interval-btn" data-interval="30">30 min</button>
+              <button type="button" class="interval-btn onboarding-interval-btn selected" data-interval="45">45 min</button>
+              <button type="button" class="interval-btn onboarding-interval-btn" data-interval="60">60 min</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary" style="margin-top: 24px;">
+            <span>Salvar e Começar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </form>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- 3. TELA INICIAL                                             -->
+      <!-- ================================================================== -->
+      <section class="screen" id="screen-home">
+        <!-- Top Bar com dados do usuário e atalhos de feedback e configurações -->
+        <div class="home-top-bar">
+          <div class="home-user-info">
+            <h2 id="home-greeting-name">Olá, Atleta</h2>
+            <p>Seu ritmo de exercícios hoje</p>
+          </div>
+          <div class="top-bar-actions">
+            <!-- Botão de Feedback -->
+            <button type="button" class="icon-btn" id="btn-open-feedback" title="Feedback">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </button>
+            <!-- Botão de Configurações -->
+            <button type="button" class="icon-btn" id="btn-open-settings" title="Configurações">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card de Progresso do Dia -->
+        <div class="progress-card">
+          <div class="progress-header">
+            <span class="progress-badge">Ciclo de Exercícios</span>
+            <span class="progress-number" id="home-progress-number">0%</span>
+          </div>
+          <h3 class="progress-title" id="home-progress-title">0 exercícios realizados hoje</h3>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="home-progress-bar-fill"></div>
+          </div>
+          <div class="metrics-row">
+            <div class="metric-box">
+              <div class="metric-val" id="stat-streak">0 dias</div>
+              <div class="metric-lbl">Sequência</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val" id="stat-minutes">0 min</div>
+              <div class="metric-lbl">Tempo Ativo</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card do Próximo Exercício Sugerido -->
+        <div class="suggested-card">
+          <div class="suggested-header">
+            <span class="suggested-tag" id="suggested-exercise-tag">Recomendado</span>
+            <span class="suggested-time" id="suggested-exercise-time">Próximo às 15:30</span>
+          </div>
+          <h3 class="suggested-title" id="suggested-exercise-title">Abraços nos Joelhos em Pé</h3>
+          <p class="suggested-cat" id="suggested-exercise-cat">Mobilidade de Quadril e Lombar - 1 min</p>
+          <button type="button" class="btn-primary" id="btn-start-suggested">
+            <!-- Ícone de Play -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span>Iniciar Exercício</span>
+          </button>
+        </div>
+
+        <!-- Catálogo com os 12 exercícios -->
+        <div class="catalog-section">
+          <div class="section-title">
+            <span id="catalog-title">Catálogo de Exercícios</span>
+          </div>
+          <div class="catalog-list" id="catalog-list">
+            <!-- Renderizado dinamicamente pelo script.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- 4. TELA DE EXERCÍCIO                                               -->
+      <!-- ================================================================== -->
+      <section class="screen" id="screen-active">
+        <div>
+          <!-- Top Bar da Sessão Ativa -->
+          <div class="active-top-bar">
+            <button type="button" class="icon-btn" id="btn-close-active" title="Voltar">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+            <span style="font-size:14px; font-weight:800; color:var(--slate-900);">Sessão Ativa</span>
+            <span style="font-size:12px; font-weight:700; color:var(--primary-800); background-color:var(--primary-100); padding:4px 10px; border-radius:999px;">
+              1 min
+            </span>
+          </div>
+
+          <!-- Título e Categoria -->
+          <div class="active-exercise-heading">
+            <h2 class="active-title" id="active-title">Nome do Exercício</h2>
+            <div class="active-details-grid" id="active-category">
+              <div class="active-detail-item">
+                <span class="active-detail-label">Foco:</span>
+                <span class="active-detail-val" id="active-detail-focus">Mobilidade de Quadril e Lombar</span>
+              </div>
+              <div class="active-detail-item">
+                <span class="active-detail-label">Tempo:</span>
+                <span class="active-detail-val" id="active-detail-time">1 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reprodutor de GIF com fallback amigável -->
+          <div class="gif-display-wrapper">
+            <span class="gif-badge">Demonstração</span>
+            <img id="active-gif-img" class="gif-image" alt="Demonstração do exercício" />
+            <div id="active-gif-fallback" class="gif-fallback">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--primary-400)" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <h4 style="font-size:14px; font-weight:700; margin-top:8px;">Arquivo GIF do Exercício</h4>
+            </div>
+          </div>
+
+          <!-- Card do Cronômetro Regressivo -->
+          <div class="timer-card">
+            <div>
+              <div class="timer-time" id="timer-countdown-text">01:00</div>
+              <div class="timer-label">Tempo Restante</div>
+            </div>
+            <div class="timer-controls">
+              <button type="button" class="timer-btn" id="btn-timer-toggle" title="Pausar / Continuar">⏸</button>
+              <button type="button" class="timer-btn" id="btn-timer-reset" title="Reiniciar">↺</button>
+            </div>
+          </div>
+
+          <!-- Instruções Passo a Passo -->
+          <div style="margin-bottom:12px;">
+            <span style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:var(--slate-500);">
+              Como Executar
+            </span>
+          </div>
+          <div class="steps-container" id="active-steps-list">
+            <!-- Preenchido dinamicamente pelo script.js -->
+          </div>
+        </div>
+
+        <!-- Ações Inferiores (Concluir e Adiar) -->
+        <div class="active-actions">
+          <button type="button" class="btn-primary" id="btn-complete-exercise">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>Concluir Exercício</span>
+          </button>
+          <button type="button" class="btn-secondary" id="btn-snooze-5">
+            Lembrar em 5 minutos
+          </button>
+        </div>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- 5.FEEDBACK                                                         -->
+      <!-- ================================================================== -->
+      <div class="modal-overlay" id="modal-feedback">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h3>Feedback ao Autor</h3>
+            <button type="button" class="modal-close-btn" aria-label="Fechar">&times;</button>
+          </div>
+          <div class="modal-body">
+            <!-- Formulário de Feedback -->
+            <div id="feedback-form-content">
+              <form id="feedback-form">
+                <label class="form-label" style="text-align:center;">Como está sendo sua experiência?</label>
+                <div class="star-rating-row">
+                  <button type="button" class="star-btn active" data-rating="1">★</button>
+                  <button type="button" class="star-btn active" data-rating="2">★</button>
+                  <button type="button" class="star-btn active" data-rating="3">★</button>
+                  <button type="button" class="star-btn active" data-rating="4">★</button>
+                  <button type="button" class="star-btn active" data-rating="5">★</button>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="feedback-name">Seu Nome</label>
+                  <input type="text" id="feedback-name" class="form-input" placeholder="Seu nome ou apelido" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Categoria</label>
+                  <div class="category-grid">
+                    <button type="button" class="category-btn selected" data-category="ideia">Ideia / Sugestão</button>
+                    <button type="button" class="category-btn" data-category="elogio">Elogio</button>
+                    <button type="button" class="category-btn" data-category="duvida">Dúvida</button>
+                    <button type="button" class="category-btn" data-category="problema">Problema / Bug</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="feedback-message">Sua Mensagem</label>
+                  <textarea id="feedback-message" class="feedback-textarea" placeholder="Deixe sua opinião, comentários sobre os exercícios ou ideias de melhoria..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                  <span>Enviar Feedback</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Caixa de Sucesso pós envio -->
+            <div id="feedback-success-box" class="success-box">
+              <div class="success-icon">✓</div>
+              <h4 style="font-size:16px; font-weight:800; color:var(--slate-900); margin-bottom:6px;">
+                Muito obrigado pelo feedback!
+              </h4>
+              <p style="font-size:13px; color:var(--slate-600); margin-bottom:18px;">
+                Sua avaliação e mensagem foram gravadas no sistema com sucesso.
+              </p>
+              <button type="button" class="btn-primary" id="btn-feedback-done">
+                <span>Concluir e Voltar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================== -->
+      <!-- 6. CONFIGURAÇÕES                                                   -->
+      <!-- ================================================================== -->
+      <div class="modal-overlay" id="modal-settings">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h3>Configurações</h3>
+            <button type="button" class="modal-close-btn" aria-label="Fechar">&times;</button>
+          </div>
+          <div class="modal-body">
+            <!-- Intervalo entre exercícios -->
+            <div class="form-group">
+              <label class="form-label">Intervalo de Notificação</label>
+              <div class="interval-grid">
+                <button type="button" class="interval-btn setting-interval-btn" data-interval="15">15m</button>
+                <button type="button" class="interval-btn setting-interval-btn" data-interval="30">30m</button>
+                <button type="button" class="interval-btn setting-interval-btn selected" data-interval="45">45m</button>
+                <button type="button" class="interval-btn setting-interval-btn" data-interval="60">60m</button>
+              </div>
+            </div>
+
+            <!-- Som dos alertas -->
+            <div class="setting-row">
+              <div class="setting-info">
+                <h5>Efeitos Sonoros</h5>
+                <p>Sino suave ao iniciar e concluir</p>
+              </div>
+              <label class="toggle-switch" aria-label="Ativar ou desativar sons">
+                <input type="checkbox" id="setting-sound-toggle" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <button type="button" class="btn-secondary" id="btn-test-sound" style="border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:10px;">
+              Testar alerta
+            </button>
+
+            <!-- Editar perfil, objetivo e limitações -->
+            <button type="button" class="btn-secondary" id="btn-edit-profile" style="border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:10px;">
+              Editar objetivo e limitações
+            </button>
+
+            <!-- Reiniciar ciclo de hoje -->
+            <button type="button" class="btn-secondary" id="btn-reset-cycle" style="border:1px solid var(--slate-200); border-radius:var(--radius-md); padding:10px;">
+              Reiniciar exercícios de hoje
+            </button>
+
+            <!-- Zerar todos os dados -->
+            <div style="margin-top:12px;">
+              <button type="button" class="danger-btn" id="btn-reset-all">
+                Apagar todos os dados e histórico
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de Confirmação para Zerar Dados -->
+      <div class="modal-overlay" id="modal-confirm-reset" style="z-index: 110;">
+        <div class="modal-dialog" style="max-width: 380px; text-align: center;">
+          <div class="modal-body" style="padding: 24px 20px;">
+
+            <h4 style="font-size: 18px; font-weight: 800; color: var(--slate-900); margin-bottom: 8px;">Certeza que quer apagar todos os dados?</h4>
+            <p style="font-size: 13px; color: var(--slate-600); line-height: 1.5; margin-bottom: 20px;">
+              Isso apagará seu perfil, histórico de atividades e configurações.
+            </p>
+            <div style="display: flex; gap: 10px;">
+              <button type="button" class="btn-secondary" id="btn-cancel-reset" style="flex: 1; padding: 12px; border: 1px solid var(--slate-300); border-radius: var(--radius-md); font-weight: 700; cursor: pointer;">
+                Cancelar
+              </button>
+              <button type="button" class="danger-btn" id="btn-confirm-reset" style="flex: 1; margin: 0; padding: 12px; background-color: #ef4444; color: #ffffff; border: none;">
+                Sim, Zerar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Flutuante de Lembrete de Exercício -->
+      <div id="exercise-reminder-banner" class="reminder-banner">
+        <div class="reminder-banner-content">
+          <div class="reminder-banner-text">
+            <h5 id="reminder-banner-title">Hora da pausa ativa!</h5>
+            <p id="reminder-banner-desc">Seu corpo precisa de movimento.<br>Faça 1 minuto agora.</p>
+          </div>
+          <button type="button" class="reminder-banner-btn" id="btn-reminder-start">Iniciar</button>
+          <button type="button" class="reminder-banner-close" id="btn-reminder-close" aria-label="Fechar">&times;</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Script JavaScript -->
+    <script src="./script.js"></script>
+  </body>
+</html>
