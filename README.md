@@ -71,7 +71,7 @@ Pode ser publicado no GitHub Pages ou em qualquer hospedagem de arquivos estáti
 
 ## Créditos
 
-- GIFs de demonstração dos exercícios: [fonte dos GIFs]
+- GIFs de demonstração dos exercícios: [https://gifdotreino.com/]
 
 ## Observação
 
